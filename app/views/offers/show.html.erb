@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Offer #<%= @offer.id %></h3>
+  <h3>Offer "<%= @offer.offers %>"</h3>
 </div>
 
 <div class="row">
@@ -9,7 +9,7 @@
       <dd>
         <% if @offer.user.present? %>
           <a href="/users/<%= @offer.counselor_id %>">
-            <%= @offer.user.created_at %>
+            <%= @offer.user.email %>
           </a>
         <% end %>
       </dd>
@@ -23,12 +23,15 @@
       <a href="/offers" class="btn btn-primary">
         Back
       </a>
+      <% if @offer.counselor_id == current_user.id %>
       <a href="/offers/<%= @offer.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_offer/<%= @offer.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% else %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -37,9 +40,10 @@
 
 <div class="row">
   <div class="col-md-12">
+    <% if @offer.counselor_id == current_user.id %>
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Offers_tags
+        Tags
       </li>
 
       <% @offer.offers_tags.each do |offer_tag| %>
@@ -84,6 +88,8 @@
     </form>
       </li>
     </ul>
+    <% else %>
+    <% end %>
   </div>
 </div>
 
@@ -99,7 +105,7 @@
       <% @offer.want_offers.each do |want_offer| %>
         <li class="list-group-item">
           <a href="/want_offers/<%= want_offer.id %>">
-            <%= want_offer.want_id %>
+            <%= want_offer.want.wants %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/want_offers/<%= want_offer.id %>" class="btn btn-primary">
@@ -151,7 +157,7 @@
 
 <!-- A Offer has many tags -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
@@ -178,4 +184,4 @@
       <% end %>
     </ul>
   </div>
-</div>
+</div> -->

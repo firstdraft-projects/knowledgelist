@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "wants#index"
+
+  root "wants#index"
+
   # Routes for the Want_offer resource:
   # CREATE
   get "/want_offers/new", :controller => "want_offers", :action => "new"

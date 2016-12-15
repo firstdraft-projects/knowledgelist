@@ -1,25 +1,25 @@
 <div class="page-header">
-  <h3>Tag #<%= @tag.id %></h3>
+  <h3>Tag "<%= @tag.tag %>"</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
+    <!-- <dl class="dl-horizontal">
       <dt>Tag</dt>
       <dd><%= @tag.tag %></dd>
 
-    </dl>
+    </dl> -->
 
     <div class="btn-group btn-group-justified">
       <a href="/tags" class="btn btn-primary">
         Back
       </a>
-      <a href="/tags/<%= @tag.id %>/edit" class="btn btn-warning">
+      <!-- <a href="/tags/<%= @tag.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_tag/<%= @tag.id %>" class="btn btn-danger" rel="nofollow">
         Delete
-      </a>
+      </a> -->
     </div>
   </div>
 </div>
@@ -30,50 +30,53 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Offers_tags
+        Offers
       </li>
 
       <% @tag.offers_tags.each do |offer_tag| %>
         <li class="list-group-item">
           <a href="/offer_tags/<%= offer_tag.id %>">
-            <%= offer_tag.offer_id %>
+            <%= offer_tag.offer.offers %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/offer_tags/<%= offer_tag.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
+            <% if offer_tag.offer.counselor_id == current_user.id%>
             <a href="/offer_tags/<%= offer_tag.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_offer_tag/<%= offer_tag.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
+            <% else %>
+            <% end %>
           </div>
         </li>
       <% end %>
 
-      <li class="list-group-item">
-        <form action="/create_offer_tag" method="post">
+      <!-- <li class="list-group-item">
+        <form action="/create_offer_tag" method="post"> -->
       <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <!-- <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"> -->
 
       <!-- Label and input for offer_id -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="offer_id" class="control-label">
           Offer
         </label>
 
         <%= select_tag(:offer_id, options_from_collection_for_select(Offer.all, :id, :counselor_id), :class => "form-control") %>
-      </div>
+      </div> -->
 
       <!-- Label and input for tag_id -->
-      <input type="hidden" name="tag_id" value="<%= @tag.id %>">
+      <!-- <input type="hidden" name="tag_id" value="<%= @tag.id %>">
 
       <button class="btn btn-block btn-success">
         Create Offer Tag
       </button>
     </form>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
@@ -84,56 +87,59 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Wants_tags
+        Wants
       </li>
 
       <% @tag.wants_tags.each do |want_tag| %>
         <li class="list-group-item">
           <a href="/want_tags/<%= want_tag.id %>">
-            <%= want_tag.want_id %>
+            <%= want_tag.want.wants %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/want_tags/<%= want_tag.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
+            <% if want_tag.want.user_id == current_user.id%>
             <a href="/want_tags/<%= want_tag.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
             <a href="/delete_want_tag/<%= want_tag.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
+            <% else %>
+            <% end %>
           </div>
         </li>
       <% end %>
 
-      <li class="list-group-item">
-        <form action="/create_want_tag" method="post">
+      <!-- <li class="list-group-item">
+        <form action="/create_want_tag" method="post"> -->
       <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <!-- <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"> -->
 
       <!-- Label and input for want_id -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="want_id" class="control-label">
           Want
         </label>
 
         <%= select_tag(:want_id, options_from_collection_for_select(Want.all, :id, :user_id), :class => "form-control") %>
-      </div>
+      </div> -->
 
       <!-- Label and input for tag_id -->
-      <input type="hidden" name="tag_id" value="<%= @tag.id %>">
+      <!-- <input type="hidden" name="tag_id" value="<%= @tag.id %>">
 
       <button class="btn btn-block btn-success">
         Create Want Tag
       </button>
     </form>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
 
 <!-- A Tag has many wants -->
-
+<!--
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
@@ -161,11 +167,11 @@
       <% end %>
     </ul>
   </div>
-</div>
+</div> -->
 
 <!-- A Tag has many offers -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
@@ -192,4 +198,4 @@
       <% end %>
     </ul>
   </div>
-</div>
+</div> -->

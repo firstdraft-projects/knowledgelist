@@ -20,14 +20,14 @@
         <td>
           <% if counselor_like.want.present? %>
             <a href="/wants/<%= counselor_like.want.id %>">
-              <%= counselor_like.want.user_id %>
+              <%= counselor_like.want.id %>
             </a>
           <% end %>
         </td>
         <td>
           <% if counselor_like.counselor.present? %>
             <a href="/users/<%= counselor_like.counselor.id %>">
-              <%= counselor_like.counselor.created_at %>
+              <%= counselor_like.counselor.id %>
             </a>
           <% end %>
         </td>

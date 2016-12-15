@@ -122,14 +122,14 @@
         <td>
           <% if want.user.present? %>
             <a href="/users/<%= want.user.id %>">
-              <%= want.user.created_at %>
+              <%= want.user.email %>
             </a>
           <% end %>
         </td>
         <td><%= want.wants %></td>
         <td>
           <a href="/wants/<%= want.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == want.user %>
             <a href="/wants/<%= want.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_want/<%= want.id %>" class="btn btn-danger" rel="nofollow">Delete</a>

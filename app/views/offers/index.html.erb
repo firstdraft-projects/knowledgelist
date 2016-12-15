@@ -122,15 +122,18 @@
         <td>
           <% if offer.user.present? %>
             <a href="/users/<%= offer.user.id %>">
-              <%= offer.user.created_at %>
+              <%= offer.user.email %>
             </a>
           <% end %>
         </td>
         <td><%= offer.offers %></td>
         <td>
           <a href="/offers/<%= offer.id %>" class="btn btn-primary">Show</a>
+          <% if offer.user.id == current_user.id %>
           <a href="/offers/<%= offer.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_offer/<%= offer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% else %>
+          <% end %>
         </td>
       </tr>
       <% end %>
